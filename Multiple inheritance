@@ -1,0 +1,59 @@
+// Define an interface for refueling
+interface Refuelable {
+    void refuel();
+}
+
+// Define an interface for recharging
+interface Rechargeable {
+    void recharge();
+}
+
+// Define a class for GasolineEngine
+class GasolineEngine implements Refuelable {
+    @Override
+    public void refuel() {
+        System.out.println("Refueling gasoline engine...");
+    }
+}
+
+// Define a class for ElectricMotor
+class ElectricMotor implements Rechargeable {
+    @Override
+    public void recharge() {
+        System.out.println("Recharging electric motor...");
+    }
+}
+
+// Define the HybridCar class that implements both interfaces
+class HybridCar implements Refuelable, Rechargeable {
+    private GasolineEngine gasolineEngine;
+    private ElectricMotor electricMotor;
+
+    public HybridCar() {
+        this.gasolineEngine = new GasolineEngine();
+        this.electricMotor = new ElectricMotor();
+    }
+
+    @Override
+    public void refuel() {
+        gasolineEngine.refuel();
+    }
+
+    @Override
+    public void recharge() {
+        electricMotor.recharge();
+    }
+
+    public void start() {
+        System.out.println("Starting hybrid car...");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        HybridCar hybridCar = new HybridCar();
+        hybridCar.start();
+        hybridCar.refuel();
+        hybridCar.recharge();
+    }
+}
